@@ -29,7 +29,7 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
     <link rel="top" title="GEMTools 1.6 documentation" href="#" />
-    <link rel="next" title="Command Line tools" href="command_line_tools.html" /> 
+    <link rel="next" title="RNA Pipeline Quickstart" href="rna_pipeline.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="#">
@@ -41,7 +41,7 @@
         <p>
         <a class="uplink" href="#">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="command_line_tools.html">Command Line tools</a>&#160;&#160;»
+        <a href="rna_pipeline.html">RNA Pipeline Quickstart</a>&#160;&#160;»
         </p>
 
       </div>
@@ -56,62 +56,23 @@ The packages consists of a <a class="reference internal" href="python_api.html#p
 you to map raw reads to both a genome and a transcriptome in a quick and easy fashion.</p>
 <div class="section" id="download-and-installation">
 <h2>Download and Installation<a class="headerlink" href="#download-and-installation" title="Permalink to this headline">¶</a></h2>
-<p>There are three different ways you can install GEMTools.</p>
-<p>First, we provide a binary package that aims to be used from the command line.
-It bundles the <em>GEM</em> binaries and the <em>gemtools</em> command and allows you to run the RNASeq pipeline directly
-from your bash shell. The package is self contained and no further dependencies are needed.
-The <em>gemtools</em> command offers an easy way to start the pipeline and various other
-tools.</p>
-<p>Secondly, you can install GEMTools as a python library. The feature set is exactly
-the same, the <em>GEM</em> binaries come bundled with the library and the <em>gemtools</em> command
-is exposed, but in addition, you will be able to use the Python API to write your
-own scripts to parse GEM output and to build customized mapping pipelines that
-integrate more tightly with your own workflow.
-In order to install the GEMTools library, you have to have some dependencies installed on you local machine.</p>
-<p>The third way to get GEMTools is to get the source distribution directly from our
-<a class="reference external" href="https://github.com/gemtools/gemtools">GitHub Repository</a>. Installing from source
-will not only allow you to easily stay up to date with the latest development, but
-you will be able to use out <a class="reference internal" href="c_api.html#c-api"><em>C API</em></a> and write very fast, parallelized
-programs to analyze the results created with GEM.</p>
-<p>Both, the binary bundle as well as the library bundle come in two version. One for
-the <em>core2</em> and one for <em>i3</em>. The right package basically depends on the capabilities
-of your CPU. The <em>core2</em> package will also work with older CPUs, but some of the
-optimizations are not available. If you don&#8217;t know if your CPU supports the <em>i3</em>
-package, run the following one liner on the machine you want to run GEM on:</p>
-<div class="highlight-python"><pre>python -c 'print ("i3 compatible" if set(["popcnt", "ssse3", "sse4_1", "sse4_2"]).issubset(set([f for sl in map(lambda x:x.split(), filter(lambda x:x.startswith("flags"), open("/proc/cpuinfo").readlines())) for f in sl])) else "No i3 support detected. Please use the core2 bundle")'</pre>
+<p>Please check the <a class="reference external" href="http://gemtools.github.io/">GEMTools homepage</a> for download and installation instructions.</p>
 </div>
-<p>This command checks your <tt class="docutils literal"><span class="pre">/proc/cpuinfo</span></tt> file for the flags <em>popcnt</em>, <em>ssse3</em>,
-<em>sse4_1</em> and <em>sse4_2</em> are present. If that is the case, the CPU is supported by the
-i3 bundle. Otherwise use core2.</p>
-<div class="section" id="downloads-binary-bundle">
-<h3>Downloads binary bundle<a class="headerlink" href="#downloads-binary-bundle" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="http://barnaserver.com/gemtools/dist/gemtools-1.6-i3.tar.gz">GEMTools binary bundle 1.6 for i3</a></li>
-<li><a class="reference external" href="http://barnaserver.com/gemtools/dist/gemtools-1.6-core2.tar.gz">GEMTools binary bundle 1.6 for core2</a></li>
-</ul>
-</div>
-<div class="section" id="downloads-library-bundle">
-<h3>Downloads library bundle<a class="headerlink" href="#downloads-library-bundle" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><a class="reference external" href="http://bla">GEMTools binary bundle 1.6 for i3</a></li>
-<li><a class="reference external" href="http://bla">GEMTools binary bundle 1.6 for core2</a></li>
-</ul>
-</div>
-<div class="section" id="souce-code">
-<h3>Souce Code<a class="headerlink" href="#souce-code" title="Permalink to this headline">¶</a></h3>
-<p>Contents:</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="command_line_tools.html">Command Line tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rna_pipeline.html">RNA Pipeline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#general-remarks">General remarks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#output-format">Output Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rna_pipeline.html">RNA Pipeline Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#download-and-install-the-gemtools">1) Download and install the gemtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#create-a-genome-index">2) Create a genome index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#transcriptome-index">3) Transcriptome index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#run-the-pipeline">4) Run the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#run-a-stats-report-on-the-output">5) Run a stats report on the output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rna_pipeline.html#running-into-problems">Running into problems?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_api.html">C API</a></li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -131,7 +92,7 @@ i3 bundle. Otherwise use core2.</p>
         <p>
         <a class="uplink" href="#">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="command_line_tools.html">Command Line tools</a>&#160;&#160;»
+        <a href="rna_pipeline.html">RNA Pipeline Quickstart</a>&#160;&#160;»
         </p>
 
       </div>
