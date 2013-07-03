@@ -197,6 +197,128 @@ like to see other features implemented. Please consider using the <a class="refe
 tracker</a>.</p>
 </div>
 </div>
+<div class="section" id="scoring-scheme">
+<h1>Scoring Scheme<a class="headerlink" href="#scoring-scheme" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>rna-pipeline</cite> computes scores for each alignment. These scores are
+transformed to the SAM MAPQ field in the resulting SAM file. Here is the basic
+scheme, how the gem scores are calculated.</p>
+<div class="section" id="best-strata">
+<h2>Best strata<a class="headerlink" href="#best-strata" title="Permalink to this headline">¶</a></h2>
+<p>The score for the best stratum is set as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="11%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Match class</th>
+<th class="head">&nbsp;</th>
+<th class="head">GEM score</th>
+<th class="head">SAM score</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="2">Unique, no subdominant match</td>
+<td>Best</td>
+<td>65504</td>
+<td>254</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>64512</td>
+<td>252</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Unique, no subdominant match(es)</td>
+<td>Best</td>
+<td>32736</td>
+<td>180</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>31744</td>
+<td>177</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Not unique, different score</td>
+<td>Best</td>
+<td>16352</td>
+<td>127</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>15360</td>
+<td>123</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Perfect tie</td>
+<td>Best</td>
+<td>14304</td>
+<td>119</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>13312</td>
+<td>114</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="next-strata">
+<h2>Next strata<a class="headerlink" href="#next-strata" title="Permalink to this headline">¶</a></h2>
+<p>If the read contains more than one mapping, the score for the next stratum is
+calculated as:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="11%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Match class</th>
+<th class="head">&nbsp;</th>
+<th class="head">GEM score</th>
+<th class="head">SAM score</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="2">Unique, no subdominant match</td>
+<td>Best</td>
+<td>8160</td>
+<td>89</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>5120</td>
+<td>71</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Unique, no subdominant match(es)</td>
+<td>Best</td>
+<td>12256</td>
+<td>110</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>9216</td>
+<td>95</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Not unique, different score</td>
+<td>Best</td>
+<td>12256</td>
+<td>110</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>9216</td>
+<td>95</td>
+</tr>
+<tr class="row-even"><td rowspan="2">Perfect tie</td>
+<td>Best</td>
+<td>12256</td>
+<td>110</td>
+</tr>
+<tr class="row-odd"><td>Worst</td>
+<td>9216</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, the optional SAM field <em>XT</em> is set to <em>R</em> for all perfect ties and to <em>U</em> for all other alignments.</p>
+</div>
+</div>
 
 
       </div>
